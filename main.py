@@ -124,6 +124,27 @@ def cross_entropy_error(y, t):
 
 
 #%%
+def numerical_gradient(f, x):
+    h = 1e-4
+    grad = np.zeros_like(x)
+
+    for idx in range(x.size):
+        tmp_val = x[idx]
+
+        x[idx] = tmp_val + h
+        fxh1 = f(x)
+
+        x[idx] = tmp_val - h
+        fxh2 = f(x)
+
+        grad[idx] = (fxh1 - fxh2) / (2 * h)
+        x[idx] = tmp_val
+
+    return grad
+
+print(numerical_gradient(lambda x:x[0]**2+x[1]**2, np.array([3.0,4.0])))
+
+#%%
 from mnist import load_mnist
 
 (x_train, t_train), (x_test, t_test) = load_mnist(flatten=True, normalize=False)
