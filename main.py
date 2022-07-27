@@ -80,6 +80,12 @@ plt.plot(x, y)
 plt.ylim(-0.1, 1.1)
 plt.show()
 #%%
+def softmax(x):
+    x = x - np.max(x, axis=-1, keepdims=True)
+    return np.exp(x) / np.sum(np.exp(x), axis=-1, keepdims=True)
+
+
+#%%
 X = np.array([1, 2])
 W = np.array([[1, 3, 5], [2, 4, 6]])
 Y = np.dot(X, W)
