@@ -104,3 +104,7 @@ A2 = np.dot(Z1, W2) + B2
 Z2 = sigmoid(A2)
 
 print(A2, Z2)
+
+#%%
+def sum_squared_error(y, t):
+    return 0.5 * np.sum((y - t) ** 2)
