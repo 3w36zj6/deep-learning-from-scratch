@@ -1,5 +1,6 @@
 #%%
 import numpy as np
+import matplotlib.pylab as plt
 
 #%%
 def AND(x1, x2):
@@ -57,3 +58,14 @@ def XOR(x1, x2):
 for x in [(0, 0), (1, 0), (0, 1), (1, 1)]:
     y = XOR(*x)
     print(f"{x} -> {y}")
+
+#%%
+def step_function(x):
+    return np.array(x > 0, dtype=int)
+
+
+x = np.arange(-5.0, 5.0, 0.1)
+y = step_function(x)
+plt.plot(x, y)
+plt.ylim(-0.1, 1.1)
+plt.show()
